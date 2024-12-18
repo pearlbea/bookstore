@@ -3,13 +3,15 @@ import { BookList } from "./components/book-list/book-list";
 
 function App() {
   return (
-    <>
-      <header>
-        <h1>Fake Bookstore</h1>
-        <p>You can pretend to buy as many as you like!</p>
+    <div>
+      <header className="mb-8">
+        <h1 className="scroll-m-20 text-4xl lg:text-5xl">Fake Bookstore</h1>
+        <p className="text-xl text-muted-foreground p-2">
+          You can pretend to buy as many as you like!
+        </p>
       </header>
       <BookList />
-    </>
+    </div>
   );
 }
 

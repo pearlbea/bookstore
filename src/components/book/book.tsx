@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function BookComponent({ book }: { book: Book }): React.ReactElement {
+export function BookComponent({ book }: { book: Book }) {
   const { author, title } = book;
 
   return (
