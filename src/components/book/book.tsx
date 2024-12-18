@@ -1,4 +1,4 @@
-import type { Book } from "../../../../data";
+import type { Book } from "../../../data";
 import {
   Card,
   CardContent,
