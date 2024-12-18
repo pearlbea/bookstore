@@ -1,13 +1,14 @@
 import "./App.css";
-import { inventory, type Book } from "../data";
-import { BookComponent } from "./Book/Book";
+import { BookList } from "./components/ui/book-list/BookList";
 
 function App() {
   return (
     <>
-      {inventory.map((book: Book) => (
-        <BookComponent key={book.id} book={book} />
-      ))}
+      <header>
+        <h1>Fake Bookstore</h1>
+        <p>You can pretend to buy as many as you like!</p>
+      </header>
+      <BookList />
     </>
   );
 }
