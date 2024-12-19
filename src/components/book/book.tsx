@@ -7,7 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function BookComponent({ book }: { book: Book }) {
+
+export function BookCard({ book }: { book: Book }) {
   const { author, title } = book;
 
   return (

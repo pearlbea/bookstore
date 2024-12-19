@@ -2,42 +2,69 @@
 
 import { useState } from "react";
 import { type Book, inventory } from "../../../data";
-import { BookComponent } from "../book/book";
-import { Button } from "../ui/button";
+import { BookCard } from "../book/book";
+import { Toggle } from "../ui/toggle";
 import { LayoutGrid, List } from "lucide-react";
 import { VisuallyHidden } from "../visually-hidden/visually-hidden";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import styles from "./book-list.module.css";
 
 export function BookList() {
+  // grid or list
   const [view, setView] = useState("grid");
 
   return (
     <div>
       <div className="flex justify-end gap-2 mb-4">
-        <Button
-          className={view === "grid" ? "bg-zinc-100" : "bg-white"}
+        <Toggle
+          defaultPressed={true}
+          onPressedChange={() => setView(view === "grid" ? "list" : "grid")}
+          data-state={view === "grid" ? "on" : "off"}
           variant="outline"
-          size="icon"
-          onClick={() => setView("grid")}
+          size="lg"
         >
-          <LayoutGrid size="48" />
+          <LayoutGrid />
           <VisuallyHidden>Grid view</VisuallyHidden>
-        </Button>
-        <Button
-          className={view === "list" ? "bg-zinc-100" : "bg-white"}
+        </Toggle>
+        <Toggle
+          onPressedChange={() => setView(view === "list" ? "grid" : "list")}
+          data-state={view === "list" ? "on" : "off"}
           variant="outline"
-          size="icon"
-          onClick={() => setView("list")}
+          size="lg"
         >
-          <List size="48" />
+          <List />
           <VisuallyHidden>Grid view</VisuallyHidden>
-        </Button>
+        </Toggle>
       </div>
-      <div className={styles.bookList}>
-        {inventory.map((book: Book) => (
-          <BookComponent key={book.id} book={book} />
-        ))}
-      </div>
+
+      {view === "grid" ? (
+        <div className={styles.bookList}>
+          {inventory.map((book: Book) => (
+            <BookCard key={book.id} book={book} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <Table>
+            <TableBody>
+              {inventory.map((book: Book) => (
+                <TableRow>
+                  <TableCell align="left">{book.title}</TableCell>
+                  <TableCell>{book.author}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      )}
     </div>
   );
 }
