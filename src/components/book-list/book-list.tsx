@@ -6,16 +6,9 @@ import { BookCard } from "../book/book";
 import { Toggle } from "../ui/toggle";
 import { LayoutGrid, List } from "lucide-react";
 import { VisuallyHidden } from "../visually-hidden/visually-hidden";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import styles from "./book-list.module.css";
+import { BookDetail } from "../book-detail/book-detail";
 
 export function BookList() {
   // grid or list
@@ -57,8 +50,13 @@ export function BookList() {
             <TableBody>
               {inventory.map((book: Book) => (
                 <TableRow>
-                  <TableCell align="left">{book.title}</TableCell>
+                  <TableCell align="left" className="text-lg">
+                    {book.title}
+                  </TableCell>
                   <TableCell>{book.author}</TableCell>
+                  <TableCell>
+                    <BookDetail book={book} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
