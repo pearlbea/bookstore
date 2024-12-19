@@ -1,4 +1,4 @@
-import type { Book } from "../../../../data";
+import type { Book } from "../../../data";
 import {
   Card,
   CardContent,
@@ -7,7 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function BookComponent({ book }: { book: Book }): React.ReactElement {
+
+export function BookCard({ book }: { book: Book }) {
   const { author, title } = book;
 
   return (

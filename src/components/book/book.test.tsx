@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { BookComponent } from "./Book";
+import { BookCard } from "./book";
 
 describe("Book", () => {
   const book = {
@@ -10,7 +10,7 @@ describe("Book", () => {
   };
 
   it("should display author and title", () => {
-    render(<BookComponent book={book} />);
+    render(<BookCard book={book} />);
     expect(screen.getByText("Middlemarch")).toBeTruthy();
     expect(screen.getByText("George Eliot")).toBeTruthy();
   });
