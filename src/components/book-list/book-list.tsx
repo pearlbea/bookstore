@@ -9,13 +9,26 @@ import { VisuallyHidden } from "../visually-hidden/visually-hidden";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import styles from "./book-list.module.css";
 import { BookDetail } from "../book-detail/book-detail";
+import { Search } from "../search/search";
 
 export function BookList() {
   // grid or list
   const [view, setView] = useState("grid");
+  const [books, setBooks] = useState(inventory);
+
+  function handleSearch(value: string) {
+    const filteredBooks = inventory.filter((item) => {
+      return (
+        item.author.toLowerCase().includes(value.toLocaleLowerCase()) ||
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+    });
+    setBooks(filteredBooks);
+  }
 
   return (
     <div>
+      <Search onSubmitSearch={handleSearch} />
       <div className="flex justify-end gap-2 mb-4">
         <Toggle
           defaultPressed={true}
@@ -40,7 +53,7 @@ export function BookList() {
 
       {view === "grid" ? (
         <div className={styles.bookList}>
-          {inventory.map((book: Book) => (
+          {books.map((book: Book) => (
             <BookCard key={book.id} book={book} />
           ))}
         </div>
@@ -48,13 +61,13 @@ export function BookList() {
         <div>
           <Table>
             <TableBody>
-              {inventory.map((book: Book) => (
+              {books.map((book: Book) => (
                 <TableRow>
                   <TableCell align="left" className="text-lg">
                     {book.title}
                   </TableCell>
                   <TableCell>{book.author}</TableCell>
-                  <TableCell>
+                  <TableCell align="right">
                     <BookDetail book={book} />
                   </TableCell>
                 </TableRow>
