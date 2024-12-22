@@ -21,10 +21,10 @@ export function Search({
         type="text"
         placeholder="Search"
         onChange={(e) => setValue(e.currentTarget.value)}
-        className="rounded-none rounded-l"
+        className="rounded-none rounded-l focus-visible:border-orange-500 focus-visible:ring-0"
         value={value}
       />
-      <Button type="submit" className="rounded-none rounded-r">
+      <Button type="submit" className="rounded-none rounded-r ">
         <SearchIcon />
       </Button>
     </form>

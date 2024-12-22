@@ -28,27 +28,29 @@ export function BookList() {
 
   return (
     <div>
-      <Search onSubmitSearch={handleSearch} />
-      <div className="flex justify-end gap-2 mb-4">
-        <Toggle
-          defaultPressed={true}
-          onPressedChange={() => setView(view === "grid" ? "list" : "grid")}
-          data-state={view === "grid" ? "on" : "off"}
-          variant="outline"
-          size="lg"
-        >
-          <LayoutGrid />
-          <VisuallyHidden>Grid view</VisuallyHidden>
-        </Toggle>
-        <Toggle
-          onPressedChange={() => setView(view === "list" ? "grid" : "list")}
-          data-state={view === "list" ? "on" : "off"}
-          variant="outline"
-          size="lg"
-        >
-          <List />
-          <VisuallyHidden>Grid view</VisuallyHidden>
-        </Toggle>
+      <div className="flex justify-between gap-2">
+        <Search onSubmitSearch={handleSearch} />
+        <div className="flex justify-end gap-2 mb-4">
+          <Toggle
+            defaultPressed={true}
+            onPressedChange={() => setView(view === "grid" ? "list" : "grid")}
+            data-state={view === "grid" ? "on" : "off"}
+            variant="outline"
+            size="lg"
+          >
+            <LayoutGrid />
+            <VisuallyHidden>Grid view</VisuallyHidden>
+          </Toggle>
+          <Toggle
+            onPressedChange={() => setView(view === "list" ? "grid" : "list")}
+            data-state={view === "list" ? "on" : "off"}
+            variant="outline"
+            size="lg"
+          >
+            <List />
+            <VisuallyHidden>Grid view</VisuallyHidden>
+          </Toggle>
+        </div>
       </div>
 
       {view === "grid" ? (
