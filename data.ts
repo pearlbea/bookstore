@@ -15,7 +15,7 @@ export const inventory: Book[] = [
   {
     id: "17e7d82b-a55c-4956-9b90-c42b98ba1de7",
     author: "Lara Hogan",
-    title: "Resilient Managment",
+    title: "Resilient Management",
   },
   {
     id: "695714f-0468-4f7f-8c62-746fa7feea8e",
